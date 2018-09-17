@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form action="/test.jsp">
+		이름 : <input type="text" name="name" id="name"><br>
+		나이 : <input type="number" name="age" id="age"><br>
+		<button type="button" onclick="goAjax()">전송</button>
+	</form>  
+<script>
+	function goAjax() {
+		var xhr = new XMLHttpRequest();		// xml을 이용해서 http를 사용할 수 있는 객체, 기본적으로 모든 브라우저에 있는 객체
+		xhr.onreadystatechange = function() {	/*대소문자를 가리지 않는다. on이 들어가면 event이다. 
+												   여기에서 event이름은 readystatechange이다. -> 값이 바뀔때마다 함수를 실행 
+												 (전화를 걸으면 0, 서버가 받으면 1, 요청을 다 알았으면 2, 요청을 수정했으면 3, **서버에 응답이 끝나면 4<오류가 와도 4, 마지막은 무조건 4>**)*/
+			if(xhr.readyState==4) {		// 나는 가만히 있는데 얘가 서버를 알아서 계속 갔다 오는것 (webRT => P2P방식으로 서로 주고 받는것) 여기에서는 대문자로 한다.
+				alert(xhr.response);
+			}	
+		}
+		var name = document.querySelector('#name').value;
+		var age = document.querySelector('#age').value;
+		var param = '?name=' + name + '&age=' + age;
+		xhr.open('GET','/test.jsp' + param);	// get방식으로 보냄, 요청주소 (get방식으로 test.jsp에 요청) -test.jsp?name=강민혁&age=19 ==> get방식으로 보낸것
+		xhr.send();
+	}
+</script>
+</body>
+</html>

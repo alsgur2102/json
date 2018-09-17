@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+		숫자1 : <input type="number" id="num1"> 
+		+ 
+		숫자2 : <input type="number" id="num2"> 
+		= 
+		<input type="number" id="result" disabled><br>
+		<button onclick="calc()">계산하기</button>
+<script>
+	function calc() {
+		var xhr = new XMLHttpRequest();
+		var num1 = document.querySelector('#num1').value;
+		var num2 = document.querySelector('#num2').value;
+		var param = '?num1=' + num1 + '&num2=' + num2;
+		xhr.onreadystatechange = function() {
+			if(xhr.readyState==4) {
+				document.querySelector('#result').value = xhr.response.trim();
+			}
+		}
+		xhr.open('GET','/calc.jsp' + param);
+		xhr.send();
+	}
+</script>
+</body>
+</html>
