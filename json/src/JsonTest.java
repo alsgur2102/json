@@ -6,11 +6,12 @@ import com.google.gson.Gson;
 public class JsonTest {
 
 	public static void main(String[] args) {
+		
 		Gson gson = new Gson();
 		String strs = "[{\"name\":\"홍길동\",\"age\":20}]";
 		System.out.println(strs);
 		
-		List<Map<String,Object>> list = gson.fromJson(strs, List.class);
+		List<Map<String,String>> list = gson.fromJson(strs, List.class);
 		System.out.println(list.get(0).get("name"));
 	}
 }

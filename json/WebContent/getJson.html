@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+제목 : <input type="text" name="bititle">
+<button onclick="search()">검색</button>
+<script>
+	function search() {
+		var xhr = new XMLHttpRequest();
+		var bititle = document.querySelector('input[name=bititle]').value;
+		
+		var param = {'bititle':bititle};	// [key,value]
+		param = JSON.stringify(param);
+		param = encodeURIComponent(param);
+		xhr.open('GET',"/getJson.jsp?param=" + param);
+		xhr.send();
+	}
+</script>
+</body>
+</html>
