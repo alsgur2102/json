@@ -5,6 +5,6 @@
 <%
 Gson gson = new Gson();
 String param = request.getParameter("param");
-Map<String,Object> map = gson.fromJson(param, Map.class);
+Map<String,Object> map = gson.fromJson(param, Map.class);	// fromJson : Integer형 값이 모두 Double형으로 변경됨
 System.out.println(map); 
 %>
