@@ -17,6 +17,7 @@ PreparedStatement ps = con.prepareStatement(sql);	// PreparedStatement : 준비�
 ResultSet rs = ps.executeQuery();
 
 List<Map<String,String>> list = new ArrayList<Map<String,String>>();
+
 	while(rs.next()) {
 		Map<String,String> bi = new HashMap<String,String>();
 		bi.put("binum",rs.getString("binum"));
